@@ -52,4 +52,4 @@ npm run dev      # development di http://localhost:5173
 npm run build    # hasil build ke dist/
 ```
 
-Setiap push ke branch `main` otomatis di-build dan deploy ke GitHub Pages lewat `.github/workflows/deploy.yml`.
+Deploy ke GitHub Pages: `npm run deploy` (build lalu push hasil ke branch `gh-pages`, yang dilayani Pages).
