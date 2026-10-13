@@ -1,5 +1,5 @@
 import Icon from './Icon.jsx'
-import { Avatar, Badge, SearchBox } from './ui.jsx'
+import { Avatar, Badge } from './ui.jsx'
 import { nav } from '../data.js'
 
 export function Sidebar({ page, go, open, close, onLogout }) {
@@ -15,7 +15,7 @@ export function Sidebar({ page, go, open, close, onLogout }) {
         </div>
         <div className="nav-label">Utama</div>
         <nav className="nav">
-          {nav.slice(0, 4).map((n) => (
+          {nav.slice(0, 5).map((n) => (
             <button
               key={n[2]}
               className={'nav-btn ' + (page === n[2] ? 'active' : '')}
@@ -32,7 +32,7 @@ export function Sidebar({ page, go, open, close, onLogout }) {
         </nav>
         <div className="nav-label">Akun</div>
         <nav className="nav">
-          {nav.slice(4).map((n) => (
+          {nav.slice(5).map((n) => (
             <button
               key={n[2]}
               className={'nav-btn ' + (page === n[2] ? 'active' : '')}
@@ -64,20 +64,21 @@ export function Sidebar({ page, go, open, close, onLogout }) {
   )
 }
 
-export function Topbar({ menu, toggleTheme }) {
+export function Topbar({ menu, toggleTheme, bell, onSearchFocus }) {
   return (
     <header className="topbar">
       <button className="icon-btn menu-btn" onClick={menu} aria-label="Buka menu">
         <Icon name="menu" />
       </button>
-      <SearchBox placeholder="Cari halaman, data, atau perintah…" />
+      <div className="search" onClick={onSearchFocus}>
+        <Icon name="search" />
+        <input className="input" placeholder="Cari halaman, data, atau perintah…" readOnly={!!onSearchFocus} onFocus={onSearchFocus} />
+      </div>
       <div className="top-actions">
         <button className="icon-btn" onClick={toggleTheme} aria-label="Ubah tema">
           <Icon name="sun" />
         </button>
-        <button className="icon-btn" aria-label="Notifikasi">
-          <Icon name="bell" />
-        </button>
+        {bell}
         <Avatar label="WP" />
       </div>
     </header>
@@ -88,6 +89,11 @@ export function PageHead({ title, desc, children }) {
   return (
     <div className="page-head">
       <div>
+        <nav className="crumbs" aria-label="Breadcrumb">
+          <span>Beranda</span>
+          <span className="crumb-sep">/</span>
+          <span className="crumb-current">{title}</span>
+        </nav>
         <h1>{title}</h1>
         <p>{desc}</p>
       </div>

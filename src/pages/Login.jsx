@@ -2,20 +2,24 @@ import { useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import { Button } from '../components/ui.jsx'
 import { DEMO_EMAIL, DEMO_PASS } from '../data.js'
+import { API_BASE_URL } from '../api.js'
 
 export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState(DEMO_EMAIL)
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  function submit(ev) {
+  async function submit(ev) {
     ev.preventDefault()
-    if (email.trim() === DEMO_EMAIL && password === DEMO_PASS) {
-      onLogin({ name: 'Wahyu Pratama', email, role: 'Administrator' })
-    } else if (!email.trim() || !password) {
+    if (!email.trim() || !password) {
       setError('Isi email dan kata sandi terlebih dahulu.')
-    } else {
-      setError('Kredensial salah. Gunakan akun demo di bawah.')
+      return
+    }
+    try {
+      await onLogin(email, password)
+    } catch (e) {
+      if (e.code === 'bad-credentials') setError('Kredensial salah. Gunakan akun demo di bawah.')
+      else setError('Gagal masuk: ' + (e.message || 'kesalahan tidak dikenal'))
     }
   }
 
@@ -63,9 +67,11 @@ export default function LoginPage({ onLogin }) {
             </Button>
           </div>
         </form>
-        <div className="demo-hint">
-          Akun demo — email: <code>{DEMO_EMAIL}</code> · sandi: <code>{DEMO_PASS}</code>
-        </div>
+        {!API_BASE_URL && (
+          <div className="demo-hint">
+            Akun demo — email: <code>{DEMO_EMAIL}</code> · sandi: <code>{DEMO_PASS}</code>
+          </div>
+        )}
         <div className="login-foot">Contoh visual. Autentikasi nyata disambungkan ke backend Anda.</div>
       </div>
     </div>

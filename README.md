@@ -10,22 +10,30 @@ Live demo: https://repowahyuillahi.github.io/wf-template/ (login demo: `admin@po
 index.html                  → entry Vite
 src/
   main.jsx                  → bootstrap React
-  App.jsx                   → shell aplikasi + state global (auth, toast, tema)
+  App.jsx                   → shell aplikasi + state global (halaman, toast, tema, notifikasi)
+  api.js                    → LAPISAN API TERPUSAT (fetch wrapper, token, 401 → auto-logout)
+  auth.jsx                  → AuthProvider: login/logout, mode demo ↔ backend
   styles.css                → design token & seluruh gaya (light/dark mode)
-  data.js                   → ikon SVG, navigasi, data contoh, peran & izin
+  data.js                   → ikon SVG, navigasi, data contoh, peran & izin, notifikasi, audit
   components/
     Icon.jsx                → ikon SVG
     ui.jsx                  → Button, Badge, Avatar, SearchBox, Switch
-    Layout.jsx              → Sidebar, Topbar, PageHead
+    Layout.jsx              → Sidebar, Topbar, PageHead (+ breadcrumbs)
     Toast.jsx               → notifikasi bertumpuk (sukses/info/peringatan/error)
     Modal.jsx               → UserModal (tambah/edit), ConfirmModal (hapus)
+    Notifications.jsx       → pusat notifikasi (dropdown lonceng)
+    CommandPalette.jsx      → Ctrl+K: cari halaman & jalankan aksi
+    ErrorBoundary.jsx       → penangkap error render
+    fields.jsx              → DateField, FileUpload, SearchableSelect
   pages/
     Login.jsx               → halaman masuk + validasi
     Dashboard.jsx           → kartu statistik, grafik, aktivitas
     Users.jsx               → tabel pengguna: cari, tambah/edit/hapus, ekspor CSV
     Roles.jsx               → matriks hak akses peran × fitur
-    FormPage.jsx            → pola form reusable + pratinjau
-    Settings.jsx            → pengaturan (tab: umum, tampilan, notifikasi)
+    AuditLog.jsx            → jejak aktivitas (siapa, apa, kapan)
+    NotFound.jsx            → halaman 404
+    FormPage.jsx            → pola form reusable + pratinjau + komponen lanjutan
+    Settings.jsx            → pengaturan (umum, tampilan: tema/aksen/font, notifikasi)
     Profile.jsx             → profil pengguna
 ```
 
@@ -40,9 +48,23 @@ src/
 
 ## Fitur
 
-- Sidebar + topbar responsif (hamburger di mobile)
-- Dark mode (otomatis ikut sistem, bisa diubah manual)
+- Sidebar + topbar responsif (hamburger di mobile), breadcrumbs otomatis
+- Dark mode + 4 warna aksen + 3 pilihan font (tersimpan di browser)
 - Toast bertumpuk: sukses/info/peringatan/error, hilang otomatis
+- **API terpusat** (`src/api.js`): token otomatis, 401 → auto-logout
+- **Auth**: mode demo tanpa backend, atau sambungkan backend via `.env` (`VITE_API_URL=...`)
+- **Pusat notifikasi**: dropdown lonceng dengan badge unread
+- **Command palette**: tekan `Ctrl+K` untuk cari halaman & jalankan aksi
+- **Audit log**: jejak aktivitas pengguna
+- **Komponen form lanjutan**: date picker, upload file (drag & drop), select dengan pencarian
+- Halaman 404 + error boundary
+
+## Menyambungkan backend
+
+1. Buat file `.env` di root: `VITE_API_URL=https://api.portal-anda.id`
+2. Sesuaikan path endpoint di `src/api.js` (`authApi`, `usersApi`, `notificationsApi`)
+3. Format login yang diharapkan: `{ token: "...", user: { name, email, role } }`
+4. Tanpa `VITE_API_URL`, aplikasi jalan dalam mode demo (data lokal)
 
 ## Cara pakai
 

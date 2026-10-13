@@ -1,10 +1,18 @@
+import { useState } from 'react'
 import Icon from '../components/Icon.jsx'
 import { Button, Badge } from '../components/ui.jsx'
 import { PageHead } from '../components/Layout.jsx'
+import { DateField, FileUpload, SearchableSelect } from '../components/fields.jsx'
 
 const emptyForm = { name: '', category: 'Digital', price: '', status: 'Draf', desc: '', featured: false }
 
-export default function FormPage({ form, setForm, reset, preview }) {
+const KOTA = ['Jakarta', 'Bogor', 'Depok', 'Tangerang', 'Bekasi', 'Bandung', 'Semarang', 'Yogyakarta', 'Surabaya', 'Medan', 'Makassar', 'Denpasar', 'Palembang', 'Balikpapan']
+
+export default function FormPage({ form, setForm, reset, preview, toast }) {
+  const [tanggal, setTanggal] = useState('')
+  const [kota, setKota] = useState('')
+  const [lampiran, setLampiran] = useState([])
+
   function set(k, v) {
     setForm({ ...form, [k]: v })
   }
@@ -81,6 +89,30 @@ export default function FormPage({ form, setForm, reset, preview }) {
           </div>
         </aside>
       </div>
+      <section className="card form-card" style={{ marginTop: 18 }}>
+        <h2 className="section-title">Komponen lanjutan</h2>
+        <p style={{ color: 'var(--muted)', marginTop: -12, marginBottom: 18, fontSize: 13 }}>
+          Date picker, unggah file, dan select dengan pencarian — siap dipakai di form mana pun.
+        </p>
+        <div className="fields">
+          <DateField label="Tanggal mulai" value={tanggal} onChange={setTanggal} hint="Format mengikuti locale browser." />
+          <SearchableSelect label="Kota" options={KOTA} value={kota} onChange={setKota} placeholder="Pilih kota…" hint="Ketik untuk memfilter daftar." />
+          <div className="field full">
+            <FileUpload label="Lampiran" hint="Klik atau seret file ke zona ini." multiple onFiles={setLampiran} />
+          </div>
+        </div>
+        <div className="modal-actions">
+          <Button
+            variant="primary"
+            onClick={() =>
+              toast &&
+              toast(`Tanggal: ${tanggal || '-'} · Kota: ${kota || '-'} · File: ${lampiran.length}`, 'info')
+            }
+          >
+            Simpan contoh
+          </Button>
+        </div>
+      </section>
     </>
   )
 }

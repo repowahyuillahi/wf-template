@@ -35,6 +35,7 @@ export const nav = [
   ['users', 'Daftar data', 'users'],
   ['form', 'Form', 'form'],
   ['shield', 'Peran & akses', 'roles'],
+  ['activity', 'Audit log', 'audit'],
   ['settings', 'Pengaturan', 'settings'],
   ['profile', 'Profil', 'profile'],
 ]
@@ -81,3 +82,21 @@ export const FONTS = [
 export function toneForStatus(status) {
   return status === 'Aktif' ? 'success' : status === 'Tertunda' ? 'warning' : 'danger'
 }
+
+export const seedNotifications = [
+  { id: 1, icon: 'users', title: 'Pengguna baru menunggu persetujuan', desc: 'Alya Rahman mendaftar sebagai Analis', time: '4 mnt lalu', unread: true },
+  { id: 2, icon: 'money', title: 'Pembayaran diterima', desc: 'Rp 2.450.000 dari PT Maju Jaya', time: '28 mnt lalu', unread: true },
+  { id: 3, icon: 'shield', title: 'Peran diperbarui', desc: 'Hak akses Editor diubah oleh Admin', time: '1 jam lalu', unread: true },
+  { id: 4, icon: 'package', title: 'Stok menipis', desc: 'Produk "Starter Kit" tersisa 12 unit', time: '3 jam lalu', unread: false },
+  { id: 5, icon: 'check', title: 'Backup berhasil', desc: 'Backup harian selesai pukul 02:00', time: 'kemarin', unread: false },
+]
+
+export const seedAudit = [
+  { time: '13 Okt 2026 10:42', user: 'Wahyu Pratama', action: 'Ubah', object: 'Peran Editor', detail: 'Menambah izin "Kelola peran"', tone: 'warning' },
+  { time: '13 Okt 2026 10:15', user: 'Wahyu Pratama', action: 'Tambah', object: 'Pengguna', detail: 'Uji Coba (uji@coba.id) sebagai Viewer', tone: 'success' },
+  { time: '13 Okt 2026 09:58', user: 'Nadia Putri', action: 'Hapus', object: 'Produk', detail: 'Menghapus "Paket Lama" dari katalog', tone: 'danger' },
+  { time: '13 Okt 2026 09:31', user: 'Fajar Akbar', action: 'Ubah', object: 'Pengaturan', detail: 'Mengganti zona waktu ke WIB', tone: 'info' },
+  { time: '12 Okt 2026 16:20', user: 'Wahyu Pratama', action: 'Masuk', object: 'Sesi', detail: 'Login dari perangkat baru (Chrome, Windows)', tone: 'info' },
+  { time: '12 Okt 2026 14:05', user: 'Alya Rahman', action: 'Ekspor', object: 'Laporan', detail: 'Mengunduh laporan pengguna (CSV)', tone: 'info' },
+  { time: '12 Okt 2026 11:47', user: 'Bima Pratama', action: 'Tambah', object: 'Produk', detail: '"Paket Kreator" ditambahkan ke katalog', tone: 'success' },
+]
