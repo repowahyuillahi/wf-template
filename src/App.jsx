@@ -23,7 +23,11 @@ const seedForm = {
 export default function App() {
   const [page, setPage] = useState('dashboard')
   const [menu, setMenu] = useState(false)
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem('wf-theme')
+    if (saved) return saved === 'dark'
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  })
   const [modal, setModal] = useState(null)
   const [query, setQuery] = useState('')
   const [tab, setTab] = useState('Umum')
@@ -32,14 +36,21 @@ export default function App() {
   const [toasts, setToasts] = useState([])
   const [auth, setAuth] = useState(null)
   const [confirm, setConfirm] = useState(null)
+  const [accent, setAccent] = useState(() => localStorage.getItem('wf-accent') || 'green')
+  const [font, setFont] = useState(() => localStorage.getItem('wf-font') || 'dm')
 
   useEffect(() => {
-    const m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-    setDark(m)
-  }, [])
-  useEffect(() => {
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+    localStorage.setItem('wf-theme', dark ? 'dark' : 'light')
   }, [dark])
+  useEffect(() => {
+    document.documentElement.setAttribute('data-accent', accent)
+    localStorage.setItem('wf-accent', accent)
+  }, [accent])
+  useEffect(() => {
+    document.documentElement.setAttribute('data-font', font)
+    localStorage.setItem('wf-font', font)
+  }, [font])
 
   function showToast(msg, type) {
     const id = Date.now() + '' + Math.floor(Math.random() * 1e6)
@@ -141,7 +152,17 @@ export default function App() {
             />
           )}
           {page === 'settings' && (
-            <Settings tab={tab} setTab={setTab} dark={dark} toggleTheme={toggleTheme} toast={showToast} />
+            <Settings
+              tab={tab}
+              setTab={setTab}
+              dark={dark}
+              toggleTheme={toggleTheme}
+              toast={showToast}
+              accent={accent}
+              setAccent={setAccent}
+              font={font}
+              setFont={setFont}
+            />
           )}
           {page === 'profile' && <Profile />}
         </main>

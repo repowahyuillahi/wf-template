@@ -65,6 +65,19 @@ export const DEMO_PASS = 'admin123'
 export const ROLES = ['Admin', 'Editor', 'Analis', 'Viewer']
 export const STATUSES = ['Aktif', 'Tertunda', 'Nonaktif']
 
+export const ACCENTS = [
+  { id: 'green', label: 'Hijau', color: '#167a4a' },
+  { id: 'blue', label: 'Biru', color: '#3563c7' },
+  { id: 'orange', label: 'Jingga', color: '#c05b25' },
+  { id: 'purple', label: 'Ungu', color: '#7559d1' },
+]
+
+export const FONTS = [
+  { id: 'dm', label: 'DM Sans', desc: 'Bawaan template' },
+  { id: 'jakarta', label: 'Plus Jakarta Sans', desc: 'Modern & tegas' },
+  { id: 'inter', label: 'Inter', desc: 'Bersih & netral' },
+]
+
 export function toneForStatus(status) {
   return status === 'Aktif' ? 'success' : status === 'Tertunda' ? 'warning' : 'danger'
 }

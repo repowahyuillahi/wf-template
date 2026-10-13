@@ -1,4 +1,6 @@
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     :root{
       color-scheme:light dark;
       --bg:#f6f7f5;--surface:#ffffff;--surface-2:#f1f3f0;--surface-3:#e8ebe7;
@@ -44,3 +46,23 @@
     @media(max-width:760px){.sidebar{transform:translateX(-100%);transition:.24s}.sidebar.open{transform:translateX(0);box-shadow:0 0 60px rgba(0,0,0,.25)}.mobile-overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:19}.shell{padding-left:0}.menu-btn{display:grid}.topbar{height:62px;padding:0 16px}.topbar>.search{display:none}.content{padding:20px 16px 32px}.page-head{align-items:flex-start;flex-direction:column}.page-head h1{font-size:25px}.head-actions{width:100%}.head-actions .btn{flex:1}.grid-stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:15px}.stat-value{font-size:22px}.activity{display:block}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.table-wrap{overflow:visible}.data-table{min-width:0}.data-table thead{display:none}.data-table,.data-table tbody,.data-table tr,.data-table td{display:block;width:100%}.data-table tr{padding:14px 16px;border-bottom:1px solid var(--line)}.data-table td{border:0!important;padding:4px 0!important;background:transparent!important;display:flex;justify-content:space-between;gap:15px;align-items:center}.data-table td:before{content:attr(data-label);font-size:11px;color:var(--muted);font-weight:700}.data-table td:first-child{display:block;margin-bottom:8px}.data-table td:first-child:before{display:none}.pagination{align-items:flex-start;gap:12px;flex-direction:column}.table-tools{align-items:stretch;flex-direction:column}.table-tools .search{max-width:none}.profile-hero{align-items:flex-start}.chart{height:220px}}
     @media(max-width:420px){.grid-stats{grid-template-columns:1fr}.top-actions .icon-btn:first-child{display:none}.head-actions{flex-direction:column}.profile-hero{flex-direction:column}.modal-actions .btn{flex:1}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    /* ===== Pilihan warna aksen (dipakai via html[data-accent]) ===== */
+    html[data-theme="light"][data-accent="blue"]{--brand:#3563c7;--brand-strong:#2a52a8;--brand-soft:#e9efff;--brand-ink:#1e3f8f}
+    html[data-theme="dark"][data-accent="blue"]{--brand:#82a7ff;--brand-strong:#9db9ff;--brand-soft:#1c2c50;--brand-ink:#ccd9ff}
+    html[data-theme="light"][data-accent="orange"]{--brand:#c05b25;--brand-strong:#a34d1d;--brand-soft:#fdeee1;--brand-ink:#7c3a12}
+    html[data-theme="dark"][data-accent="orange"]{--brand:#f0a35e;--brand-strong:#f5b57e;--brand-soft:#3a2415;--brand-ink:#ffd9b3}
+    html[data-theme="light"][data-accent="purple"]{--brand:#7559d1;--brand-strong:#5f46b8;--brand-soft:#efeaff;--brand-ink:#3f2d8f}
+    html[data-theme="dark"][data-accent="purple"]{--brand:#b39dff;--brand-strong:#c4b5fd;--brand-soft:#2a2350;--brand-ink:#ddd0ff}
+    /* ===== Pilihan font (dipakai via html[data-font]) ===== */
+    html[data-font="jakarta"]{--font:'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif}
+    html[data-font="inter"]{--font:'Inter','DM Sans',ui-sans-serif,system-ui,sans-serif}
+    .font-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .font-opt{border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:left}
+    .font-opt:hover{background:var(--surface-2)}
+    .font-opt.active{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 16%,transparent)}
+    .font-opt strong{display:block;font-size:14px}
+    .font-opt span{font-size:11px;color:var(--muted)}
+    .font-opt[data-font="dm"] strong{font-family:'DM Sans',sans-serif}
+    .font-opt[data-font="jakarta"] strong{font-family:'Plus Jakarta Sans',sans-serif}
+    .font-opt[data-font="inter"] strong{font-family:'Inter',sans-serif}
+    @media(max-width:760px){.font-row{grid-template-columns:1fr}}

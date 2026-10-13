@@ -1,10 +1,11 @@
 import Icon from '../components/Icon.jsx'
 import { Switch } from '../components/ui.jsx'
 import { PageHead } from '../components/Layout.jsx'
+import { ACCENTS, FONTS } from '../data.js'
 
 const tabs = ['Umum', 'Tampilan', 'Notifikasi']
 
-export default function Settings({ tab, setTab, dark, toggleTheme, toast }) {
+export default function Settings({ tab, setTab, dark, toggleTheme, toast, accent, setAccent, font, setFont }) {
   return (
     <>
       <PageHead title="Pengaturan" desc="Kelola tampilan dan perilaku ruang kerja." />
@@ -53,13 +54,45 @@ export default function Settings({ tab, setTab, dark, toggleTheme, toast }) {
             <div className="setting">
               <div>
                 <strong>Warna aksen</strong>
-                <span>Aksen hijau menjadi ciri visual utama</span>
+                <span>Aksen menjadi ciri visual utama seluruh aplikasi</span>
               </div>
               <div className="color-row">
-                <button className="swatch active" style={{ background: '#167a4a' }} aria-label="Hijau" />
-                <button className="swatch" style={{ background: '#3563c7' }} aria-label="Biru" />
-                <button className="swatch" style={{ background: '#c05b25' }} aria-label="Jingga" />
+                {ACCENTS.map((a) => (
+                  <button
+                    key={a.id}
+                    className={'swatch ' + (accent === a.id ? 'active' : '')}
+                    style={{ background: a.color }}
+                    aria-label={a.label}
+                    title={a.label}
+                    onClick={() => {
+                      setAccent(a.id)
+                      toast('Warna aksen: ' + a.label, 'info')
+                    }}
+                  />
+                ))}
               </div>
+            </div>
+            <div className="setting" style={{ alignItems: 'start' }}>
+              <div>
+                <strong>Font antarmuka</strong>
+                <span>Jenis huruf untuk seluruh aplikasi</span>
+              </div>
+            </div>
+            <div className="font-row" style={{ paddingBottom: 16 }}>
+              {FONTS.map((f) => (
+                <button
+                  key={f.id}
+                  data-font={f.id}
+                  className={'font-opt ' + (font === f.id ? 'active' : '')}
+                  onClick={() => {
+                    setFont(f.id)
+                    toast('Font: ' + f.label, 'info')
+                  }}
+                >
+                  <strong>Aa {f.label}</strong>
+                  <span>{f.desc}</span>
+                </button>
+              ))}
             </div>
           </div>
         )}
