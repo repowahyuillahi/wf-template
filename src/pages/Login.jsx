@@ -4,6 +4,8 @@ import { Button } from '../components/ui.jsx'
 import { DEMO_EMAIL, DEMO_PASS } from '../data.js'
 import { API_BASE_URL } from '../api.js'
 
+const LOGO = import.meta.env.BASE_URL + 'logo.svg'
+
 export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState(DEMO_EMAIL)
   const [password, setPassword] = useState('')
@@ -27,9 +29,11 @@ export default function LoginPage({ onLogin }) {
     <div className="login-wrap">
       <div className="card login-card">
         <div className="login-brand">
-          <div className="mark">W</div>
+          <div className="mark">
+            <img src={LOGO} alt="WF" />
+          </div>
           <div>
-            <strong>IT Portal</strong>
+            <strong>WF Template</strong>
             <span>Design system · ciri khas kita</span>
           </div>
         </div>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="WFLabs logo">
+  <title>WFLabs logo</title>
+  <g fill="none" stroke="#000">
+    <path d="M31,62 L63,190 L87,126 L111,190 L143,62" stroke-width="28" stroke-linejoin="round" stroke-linecap="square"/>
+    <path d="M181,62 L181,190" stroke-width="28" stroke-linecap="square"/>
+    <path d="M181,62 L223,62" stroke-width="28" stroke-linecap="square"/>
+    <path d="M197,126 L207,126 L213,96 L223,126 L239,126" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+</svg>

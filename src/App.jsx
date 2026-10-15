@@ -15,6 +15,8 @@ import NotFound from './pages/NotFound.jsx'
 import FormPage, { emptyForm } from './pages/FormPage.jsx'
 import Settings from './pages/Settings.jsx'
 import Profile from './pages/Profile.jsx'
+import Notifications from './pages/Notifications.jsx'
+import Guide from './pages/Guide.jsx'
 import { seedUsers, seedNotifications, toneForStatus } from './data.js'
 
 const seedForm = {
@@ -129,6 +131,10 @@ function Shell() {
     setNotifs((prev) => prev.map((n) => ({ ...n, unread: false })))
   }
 
+  function markOneNotifRead(id) {
+    setNotifs((prev) => prev.map((n) => (n.id === id ? { ...n, unread: false } : n)))
+  }
+
   const paletteActions = [
     { icon: 'sun', label: 'Ubah tema gelap/terang', run: () => toggleTheme() },
     { icon: 'plus', label: 'Tambah pengguna', run: () => openModal() },
@@ -225,7 +231,11 @@ function Shell() {
               />
             )}
             {page === 'profile' && <Profile />}
-            {['dashboard', 'users', 'roles', 'audit', 'form', 'settings', 'profile'].indexOf(page) === -1 && (
+            {page === 'notifications' && (
+              <Notifications items={notifs} onReadAll={markNotifsRead} onReadOne={markOneNotifRead} />
+            )}
+            {page === 'guide' && <Guide />}
+            {['dashboard', 'users', 'roles', 'audit', 'form', 'settings', 'profile', 'notifications', 'guide'].indexOf(page) === -1 && (
               <NotFound go={setPage} />
             )}
           </ErrorBoundary>

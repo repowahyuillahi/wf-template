@@ -29,16 +29,34 @@ export const paths = {
   trash: 'M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6',
 }
 
-// [icon, label, pageKey]
-export const nav = [
-  ['dashboard', 'Dashboard', 'dashboard'],
-  ['users', 'Daftar data', 'users'],
-  ['form', 'Form', 'form'],
-  ['shield', 'Peran & akses', 'roles'],
-  ['activity', 'Audit log', 'audit'],
-  ['settings', 'Pengaturan', 'settings'],
-  ['profile', 'Profil', 'profile'],
+// [icon, label, pageKey] — dikelompokkan per seksi
+export const navGroups = [
+  {
+    label: 'Utama',
+    items: [
+      ['dashboard', 'Dashboard', 'dashboard'],
+      ['users', 'Daftar data', 'users'],
+      ['form', 'Form', 'form'],
+    ],
+  },
+  {
+    label: 'Sistem',
+    items: [
+      ['shield', 'Peran & akses', 'roles'],
+      ['activity', 'Audit log', 'audit'],
+      ['bell', 'Notifikasi', 'notifications'],
+      ['settings', 'Pengaturan', 'settings'],
+    ],
+  },
+  {
+    label: 'Bantuan',
+    items: [
+      ['info', 'Panduan', 'guide'],
+      ['profile', 'Profil', 'profile'],
+    ],
+  },
 ]
+export const nav = navGroups.flatMap((g) => g.items)
 
 export const seedUsers = [
   { name: 'Nadia Putri', email: 'nadia@ruangdata.id', role: 'Admin', status: 'Aktif', joined: '12 Okt 2026', tone: 'success' },
