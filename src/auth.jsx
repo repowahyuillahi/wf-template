@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
     }
     // --- mode demo (tanpa backend) ---
     if (email.trim() === DEMO_EMAIL && password === DEMO_PASS) {
-      const u = { name: 'Wahyu Pratama', email: email.trim(), role: 'Administrator' }
+      const u = { name: 'Wahyu Illahi', email: email.trim(), role: 'Administrator' }
       setUser(u)
       localStorage.setItem(USER_KEY, JSON.stringify(u))
       return u

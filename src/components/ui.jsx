@@ -25,6 +25,13 @@ export function Avatar({ label, style }) {
   )
 }
 
+// Inisial dari nama lengkap, mis. "Wahyu Illahi" -> "WI"
+export function initials(name) {
+  const parts = String(name || '').trim().split(/\s+/)
+  if (!parts[0]) return '?'
+  return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase()
+}
+
 export function SearchBox({ placeholder = 'Cari…', value = '', onChange }) {
   return (
     <div className="search">

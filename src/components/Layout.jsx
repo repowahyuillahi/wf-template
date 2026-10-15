@@ -1,11 +1,13 @@
 import { Fragment } from 'react'
 import Icon from './Icon.jsx'
-import { Avatar, Badge } from './ui.jsx'
+import { Avatar, Badge, initials } from './ui.jsx'
 import { navGroups } from '../data.js'
 
 const LOGO = import.meta.env.BASE_URL + 'logo.svg'
 
-export function Sidebar({ page, go, open, close, onLogout }) {
+export function Sidebar({ page, go, open, close, onLogout, user }) {
+  const name = user?.name || 'Wahyu Illahi'
+  const role = user?.role || 'Administrator'
   return (
     <>
       <div className={'mobile-overlay ' + (open ? 'show' : '')} onClick={close} />
@@ -42,10 +44,10 @@ export function Sidebar({ page, go, open, close, onLogout }) {
         ))}
         <div className="sidebar-foot">
           <div className="profile-mini">
-            <Avatar label="WP" />
+            <Avatar label={initials(name)} />
             <div>
-              <strong>Wahyu Pratama</strong>
-              <span>Administrator</span>
+              <strong>{name}</strong>
+              <span>{role}</span>
             </div>
           </div>
           <button className="logout-row" onClick={onLogout}>
@@ -58,7 +60,7 @@ export function Sidebar({ page, go, open, close, onLogout }) {
   )
 }
 
-export function Topbar({ menu, toggleTheme, bell, onSearchFocus }) {
+export function Topbar({ menu, toggleTheme, bell, onSearchFocus, user }) {
   return (
     <header className="topbar">
       <button className="icon-btn menu-btn" onClick={menu} aria-label="Buka menu">
@@ -73,7 +75,7 @@ export function Topbar({ menu, toggleTheme, bell, onSearchFocus }) {
           <Icon name="sun" />
         </button>
         {bell}
-        <Avatar label="WP" />
+        <Avatar label={initials(user?.name || 'Wahyu Illahi')} />
       </div>
     </header>
   )

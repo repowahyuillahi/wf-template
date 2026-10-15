@@ -1,15 +1,18 @@
 import Icon from '../components/Icon.jsx'
-import { Badge, Avatar } from '../components/ui.jsx'
+import { Badge, Avatar, initials } from '../components/ui.jsx'
 import { PageHead } from '../components/Layout.jsx'
+import { useAuth } from '../auth.jsx'
 
 export default function Profile() {
+  const { user } = useAuth()
+  const name = user?.name || 'Wahyu Illahi'
   return (
     <>
       <PageHead title="Profil" desc="Informasi akun dan preferensi personal." />
       <section className="card profile-hero">
-        <Avatar label="WP" />
+        <Avatar label={initials(name)} />
         <div>
-          <h2>Wahyu Pratama</h2>
+          <h2>{name}</h2>
           <p>Pemilik ruang kerja · Bergabung Oktober 2026</p>
         </div>
         <div style={{ marginLeft: 'auto' }}>
@@ -21,7 +24,7 @@ export default function Profile() {
         <div className="fields">
           <label className="field">
             <span className="label">Nama lengkap</span>
-            <input className="input" defaultValue="Wahyu Pratama" />
+            <input className="input" defaultValue={name} />
           </label>
           <label className="field">
             <span className="label">Jabatan</span>

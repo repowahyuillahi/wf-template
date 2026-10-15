@@ -110,11 +110,11 @@ export const seedNotifications = [
 ]
 
 export const seedAudit = [
-  { time: '13 Okt 2026 10:42', user: 'Wahyu Pratama', action: 'Ubah', object: 'Peran Editor', detail: 'Menambah izin "Kelola peran"', tone: 'warning' },
-  { time: '13 Okt 2026 10:15', user: 'Wahyu Pratama', action: 'Tambah', object: 'Pengguna', detail: 'Uji Coba (uji@coba.id) sebagai Viewer', tone: 'success' },
+  { time: '13 Okt 2026 10:42', user: 'Wahyu Illahi', action: 'Ubah', object: 'Peran Editor', detail: 'Menambah izin "Kelola peran"', tone: 'warning' },
+  { time: '13 Okt 2026 10:15', user: 'Wahyu Illahi', action: 'Tambah', object: 'Pengguna', detail: 'Uji Coba (uji@coba.id) sebagai Viewer', tone: 'success' },
   { time: '13 Okt 2026 09:58', user: 'Nadia Putri', action: 'Hapus', object: 'Produk', detail: 'Menghapus "Paket Lama" dari katalog', tone: 'danger' },
   { time: '13 Okt 2026 09:31', user: 'Fajar Akbar', action: 'Ubah', object: 'Pengaturan', detail: 'Mengganti zona waktu ke WIB', tone: 'info' },
-  { time: '12 Okt 2026 16:20', user: 'Wahyu Pratama', action: 'Masuk', object: 'Sesi', detail: 'Login dari perangkat baru (Chrome, Windows)', tone: 'info' },
+  { time: '12 Okt 2026 16:20', user: 'Wahyu Illahi', action: 'Masuk', object: 'Sesi', detail: 'Login dari perangkat baru (Chrome, Windows)', tone: 'info' },
   { time: '12 Okt 2026 14:05', user: 'Alya Rahman', action: 'Ekspor', object: 'Laporan', detail: 'Mengunduh laporan pengguna (CSV)', tone: 'info' },
   { time: '12 Okt 2026 11:47', user: 'Bima Pratama', action: 'Tambah', object: 'Produk', detail: '"Paket Kreator" ditambahkan ke katalog', tone: 'success' },
 ]

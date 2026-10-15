@@ -183,12 +183,13 @@ function Shell() {
 
   return (
     <div className="app">
-      <Sidebar page={page} go={setPage} open={menu} close={() => setMenu(false)} onLogout={logout} />
+      <Sidebar page={page} go={setPage} open={menu} close={() => setMenu(false)} onLogout={logout} user={user} />
       <div className="shell">
         <Topbar
           menu={() => setMenu(true)}
           toggleTheme={toggleTheme}
           onSearchFocus={() => setPalette(true)}
+          user={user}
           bell={
             <NotificationBell items={notifs} onOpen={markNotifsRead} onReadAll={markNotifsRead} />
           }
