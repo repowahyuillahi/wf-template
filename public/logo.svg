@@ -1,9 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="WFLabs logo">
-  <title>WFLabs logo</title>
-  <g fill="none" stroke="#000">
-    <path d="M31,62 L63,190 L87,126 L111,190 L143,62" stroke-width="28" stroke-linejoin="round" stroke-linecap="square"/>
-    <path d="M181,62 L181,190" stroke-width="28" stroke-linecap="square"/>
-    <path d="M181,62 L223,62" stroke-width="28" stroke-linecap="square"/>
-    <path d="M197,126 L207,126 L213,96 L223,126 L239,126" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="WF logo">
+  <title>WF</title>
+  <g transform="translate(3,8)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="square">
+    <path d="M40 64 L74 192 L106 108 L138 192 L138 64 L210 64" stroke-width="30"/>
+    <path d="M138 128 L160 128 L171 96 L183 150 L193 128 L210 128" stroke-width="20"/>
   </g>
 </svg>
