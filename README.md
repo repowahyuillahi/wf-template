@@ -44,6 +44,12 @@ src/
 - **Daftar Data** — tabel dengan pencarian & pagination, unduh CSV, tambah/edit/hapus pengguna (modal + konfirmasi hapus)
 - **Peran & Akses** — matriks hak akses 4 peran (Admin, Editor, Analis, Viewer) × 6 fitur, bisa dicentang langsung
 - **Form** — contoh tambah/edit (input, select, checkbox, switch)
+- **Laporan** — grafik batang animasi + donat, filter 7 hari / 30 hari / 12 bulan, ekspor
+- **Kalender** — tampilan bulan, tambah/hapus agenda per tanggal
+- **Pesan** — inbox 2 panel, cari, tulis & kirim pesan
+- **Tugas** — kanban 3 kolom (Antrian/Proses/Selesai), tambah & geser kartu
+- **File** — file manager: folder, cari, unggah file asli, hapus
+- **Tagihan** — daftar invoice, status bayar, halaman detail + cetak
 - **Pengaturan** & **Profil**
 
 ## Fitur

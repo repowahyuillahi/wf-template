@@ -27,6 +27,19 @@ export const paths = {
   lock: 'M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM7 11V7a5 5 0 0 1 10 0v4',
   check: 'M20 6 9 17l-5-5',
   trash: 'M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6',
+  calendar: 'M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM16 2v4M8 2v4M3 10h18',
+  mail: 'M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM22 6l-10 7L2 6',
+  columns: 'M3 3h18v18H3zM9 3v18M15 3v18',
+  folder: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z',
+  receipt: 'M5 3h14v18l-2.3-1.6-2.3 1.6-2.4-1.6-2.4 1.6-2.3-1.6L5 21zM9 8h6M9 12h6',
+  chartbar: 'M3 3v18h18M8 17v-6M13 17V7M18 17v-3',
+  chartpie: 'M21.2 15.9A10 10 0 1 1 8 2.8M22 12A10 10 0 0 0 12 2v10z',
+  upload: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12',
+  printer: 'M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z',
+  arrowleft: 'M19 12H5M12 19l-7-7 7-7',
+  clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20M12 6v6l4 2',
+  image: 'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM21 15l-5-5L5 21',
+  send: 'M22 2L11 13M22 2l-7 20-4-9-9-4z',
 }
 
 // [icon, label, pageKey] — dikelompokkan per seksi
@@ -35,8 +48,19 @@ export const navGroups = [
     label: 'Utama',
     items: [
       ['dashboard', 'Dashboard', 'dashboard'],
+      ['chartbar', 'Laporan', 'reports'],
+      ['calendar', 'Kalender', 'calendar'],
+    ],
+  },
+  {
+    label: 'Kelola',
+    items: [
       ['users', 'Daftar data', 'users'],
       ['form', 'Form', 'form'],
+      ['mail', 'Pesan', 'messages'],
+      ['columns', 'Tugas', 'tasks'],
+      ['folder', 'File', 'files'],
+      ['receipt', 'Tagihan', 'invoices'],
     ],
   },
   {
@@ -118,3 +142,130 @@ export const seedAudit = [
   { time: '12 Okt 2026 14:05', user: 'Alya Rahman', action: 'Ekspor', object: 'Laporan', detail: 'Mengunduh laporan pengguna (CSV)', tone: 'info' },
   { time: '12 Okt 2026 11:47', user: 'Bima Pratama', action: 'Tambah', object: 'Produk', detail: '"Paket Kreator" ditambahkan ke katalog', tone: 'success' },
 ]
+
+// ===== Seed: Laporan =====
+export const REPORT_PERIODS = ['7 hari', '30 hari', '12 bulan']
+export const seedReports = {
+  '7 hari': {
+    stats: [
+      { label: 'Pendapatan', value: 'Rp 18,4 jt', delta: '+9,2%', note: 'vs minggu lalu' },
+      { label: 'Transaksi', value: '312', delta: '+14,1%', note: 'vs minggu lalu' },
+      { label: 'Pengunjung', value: '8.204', delta: '+5,6%', note: 'vs minggu lalu' },
+      { label: 'Retensi', value: '64%', delta: '+2,1%', note: 'poin minggu ini' },
+    ],
+    bars: [42, 68, 55, 80, 62, 90, 74],
+    barLabels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+    donut: [
+      { label: 'Produk digital', pct: 46, tone: 'success' },
+      { label: 'Jasa', pct: 31, tone: 'info' },
+      { label: 'Lainnya', pct: 23, tone: 'warning' },
+    ],
+  },
+  '30 hari': {
+    stats: [
+      { label: 'Pendapatan', value: 'Rp 84,2 jt', delta: '+12,5%', note: 'vs bulan lalu' },
+      { label: 'Transaksi', value: '1.284', delta: '+8,2%', note: 'vs bulan lalu' },
+      { label: 'Pengunjung', value: '32.910', delta: '+11,3%', note: 'vs bulan lalu' },
+      { label: 'Retensi', value: '61%', delta: '+1,4%', note: 'poin bulan ini' },
+    ],
+    bars: [38, 52, 47, 63, 58, 71, 66, 78, 60, 84, 77, 90],
+    barLabels: ['1', '4', '7', '10', '13', '16', '19', '22', '25', '28', '30', ''],
+    donut: [
+      { label: 'Produk digital', pct: 52, tone: 'success' },
+      { label: 'Jasa', pct: 28, tone: 'info' },
+      { label: 'Lainnya', pct: 20, tone: 'warning' },
+    ],
+  },
+  '12 bulan': {
+    stats: [
+      { label: 'Pendapatan', value: 'Rp 912 jt', delta: '+22,4%', note: 'vs tahun lalu' },
+      { label: 'Transaksi', value: '14.208', delta: '+18,9%', note: 'vs tahun lalu' },
+      { label: 'Pengunjung', value: '388 rb', delta: '+31,2%', note: 'vs tahun lalu' },
+      { label: 'Retensi', value: '58%', delta: '+3,8%', note: 'poin tahun ini' },
+    ],
+    bars: [30, 42, 38, 51, 47, 60, 55, 68, 74, 70, 85, 92],
+    barLabels: ['N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O'],
+    donut: [
+      { label: 'Produk digital', pct: 49, tone: 'success' },
+      { label: 'Jasa', pct: 33, tone: 'info' },
+      { label: 'Lainnya', pct: 18, tone: 'warning' },
+    ],
+  },
+}
+
+// ===== Seed: Kalender =====
+export const seedEvents = [
+  { id: 1, date: '2026-10-16', title: 'Rapat tim mingguan', time: '09:00' },
+  { id: 2, date: '2026-10-16', title: 'Review desain template', time: '14:00' },
+  { id: 3, date: '2026-10-19', title: 'Rilis update cabang', time: '10:00' },
+  { id: 4, date: '2026-10-21', title: 'Backup & maintenance', time: '22:00' },
+  { id: 5, date: '2026-10-26', title: 'Demo ke klien', time: '13:30' },
+]
+
+// ===== Seed: Pesan =====
+export const seedMessages = [
+  { id: 1, from: 'Nadia Putri', email: 'nadia@ruangdata.id', subject: 'Minta akses laporan cabang', time: '09:12', unread: true,
+    body: 'Halo,\n\nBolehkah saya mendapat akses ke halaman Laporan untuk cabang Padang? Perlu untuk rekap mingguan.\n\nTerima kasih,\nNadia' },
+  { id: 2, from: 'Fajar Akbar', email: 'fajar@ruangdata.id', subject: 'Formulir pendaftaran sudah diperbarui', time: 'kemarin', unread: true,
+    body: 'Formulir pendaftaran anggota sudah saya perbarui mengikuti field baru di template. Mohon dicek sebelum dipublish.' },
+  { id: 3, from: 'Sistem', email: 'noreply@ruangdata.id', subject: 'Backup harian berhasil', time: 'kemarin', unread: false,
+    body: 'Backup otomatis database selesai pukul 02:00. Ukuran arsip 84 MB. Tidak ada error.' },
+  { id: 4, from: 'Alya Rahman', email: 'alya@ruangdata.id', subject: 'Jadwal demo ulang', time: '2 hari lalu', unread: false,
+    body: 'Jadwal demo ke klien dimajukan ke tanggal 26. Materi presentasi sudah siap di folder File.' },
+]
+
+// ===== Seed: Tugas =====
+export const seedTasks = {
+  todo: [
+    { id: 1, title: 'Desain halaman pricing', tag: 'Desain', tone: 'info', who: 'NP' },
+    { id: 2, title: 'Tulis dokumentasi API', tag: 'Docs', tone: 'warning', who: 'FA' },
+  ],
+  doing: [
+    { id: 3, title: 'Integrasi login backend', tag: 'Dev', tone: 'success', who: 'WI' },
+  ],
+  done: [
+    { id: 4, title: 'Perbaiki nama admin demo', tag: 'Dev', tone: 'success', who: 'WI' },
+    { id: 5, title: 'Pasang logo WF resmi', tag: 'Desain', tone: 'info', who: 'WI' },
+  ],
+}
+export const TASK_COLS = [
+  ['todo', 'Antrian'],
+  ['doing', 'Proses'],
+  ['done', 'Selesai'],
+]
+
+// ===== Seed: File =====
+export const seedFiles = [
+  { id: 1, name: 'Desain', type: 'folder', items: 8, modified: '12 Okt 2026', parent: null },
+  { id: 2, name: 'Dokumen', type: 'folder', items: 14, modified: '10 Okt 2026', parent: null },
+  { id: 3, name: 'Presentasi klien.pdf', type: 'pdf', size: '4,2 MB', modified: '14 Okt 2026', parent: null },
+  { id: 4, name: 'Logo WF', type: 'folder', items: 9, modified: '15 Okt 2026', parent: null },
+  { id: 5, name: 'mockup-dashboard.png', type: 'image', size: '1,8 MB', modified: '13 Okt 2026', parent: null },
+  { id: 6, name: 'backup-okt.zip', type: 'zip', size: '84 MB', modified: '11 Okt 2026', parent: null },
+  { id: 7, name: 'panduan-v2.docx', type: 'doc', size: '640 KB', modified: '9 Okt 2026', parent: null },
+  { id: 8, name: 'logo.svg', type: 'image', size: '4 KB', modified: '15 Okt 2026', parent: 4 },
+  { id: 9, name: 'favicon.ico', type: 'image', size: '4 KB', modified: '15 Okt 2026', parent: 4 },
+  { id: 10, name: 'katalog.html', type: 'doc', size: '12 KB', modified: '15 Okt 2026', parent: 4 },
+]
+export const FILE_ICON = { folder: 'folder', pdf: 'file', doc: 'file', image: 'image', zip: 'package' }
+
+// ===== Seed: Tagihan =====
+export const seedInvoices = [
+  { id: 1, no: 'INV-2026-1042', client: 'PT Maju Jaya', date: '2 Okt 2026', due: '16 Okt 2026', amount: 2450000, status: 'Menunggu', tone: 'warning',
+    items: [
+      { desc: 'Langganan paket Pro (Okt)', qty: 1, price: 2000000 },
+      { desc: 'Pengguna tambahan (9)', qty: 9, price: 50000 },
+    ] },
+  { id: 2, no: 'INV-2026-1038', client: 'CV Berkah Abadi', date: '28 Sep 2026', due: '12 Okt 2026', amount: 1200000, status: 'Lunas', tone: 'success',
+    items: [{ desc: 'Langganan paket Tim (Sep)', qty: 1, price: 1200000 }] },
+  { id: 3, no: 'INV-2026-1035', client: 'UD Sinar Baru', date: '20 Sep 2026', due: '4 Okt 2026', amount: 875000, status: 'Jatuh tempo', tone: 'danger',
+    items: [{ desc: 'Langganan paket Dasar (Sep)', qty: 1, price: 875000 }] },
+  { id: 4, no: 'INV-2026-1044', client: 'PT Cahaya Timur', date: '10 Okt 2026', due: '24 Okt 2026', amount: 3600000, status: 'Menunggu', tone: 'warning',
+    items: [
+      { desc: 'Langganan paket Pro (Okt)', qty: 1, price: 2000000 },
+      { desc: 'Setup & migrasi data', qty: 1, price: 1600000 },
+    ] },
+]
+export function rupiah(n) {
+  return 'Rp ' + n.toLocaleString('id-ID')
+}

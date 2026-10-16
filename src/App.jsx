@@ -17,6 +17,12 @@ import Settings from './pages/Settings.jsx'
 import Profile from './pages/Profile.jsx'
 import Notifications from './pages/Notifications.jsx'
 import Guide from './pages/Guide.jsx'
+import Reports from './pages/Reports.jsx'
+import Calendar from './pages/Calendar.jsx'
+import Messages from './pages/Messages.jsx'
+import Tasks from './pages/Tasks.jsx'
+import Files from './pages/Files.jsx'
+import Invoices from './pages/Invoices.jsx'
 import { seedUsers, seedNotifications, toneForStatus } from './data.js'
 
 const seedForm = {
@@ -236,7 +242,13 @@ function Shell() {
               <Notifications items={notifs} onReadAll={markNotifsRead} onReadOne={markOneNotifRead} />
             )}
             {page === 'guide' && <Guide />}
-            {['dashboard', 'users', 'roles', 'audit', 'form', 'settings', 'profile', 'notifications', 'guide'].indexOf(page) === -1 && (
+            {page === 'reports' && <Reports toast={showToast} />}
+            {page === 'calendar' && <Calendar toast={showToast} />}
+            {page === 'messages' && <Messages toast={showToast} />}
+            {page === 'tasks' && <Tasks toast={showToast} />}
+            {page === 'files' && <Files toast={showToast} />}
+            {page === 'invoices' && <Invoices toast={showToast} />}
+            {['dashboard', 'users', 'roles', 'audit', 'form', 'settings', 'profile', 'notifications', 'guide', 'reports', 'calendar', 'messages', 'tasks', 'files', 'invoices'].indexOf(page) === -1 && (
               <NotFound go={setPage} />
             )}
           </ErrorBoundary>
