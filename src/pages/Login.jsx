@@ -8,7 +8,8 @@ const LOGO = import.meta.env.BASE_URL + 'logo.svg'
 
 export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState(DEMO_EMAIL)
-  const [password, setPassword] = useState('')
+  // Preview template: sandi demo terisi otomatis, tinggal klik Masuk.
+  const [password, setPassword] = useState(DEMO_PASS)
   const [error, setError] = useState('')
 
   async function submit(ev) {

@@ -1,5 +1,6 @@
 import Icon from '../components/Icon.jsx'
 import { PageHead } from '../components/Layout.jsx'
+import OtpVerification from '../components/OtpVerification.jsx'
 
 const SECTIONS = [
   {
@@ -61,6 +62,21 @@ export default function Guide() {
           </article>
         ))}
       </div>
+      <section className="otp-showcase">
+        <div className="guide-head">
+          <span className="stat-icon">
+            <Icon name="lock" />
+          </span>
+          <h2>Komponen: Verifikasi OTP</h2>
+        </div>
+        <p>
+          Komponen verifikasi kode satu kali buatan sendiri — ring progres dan sapuan tombol
+          mengikuti ketikan, kotak memantul per digit, sukses hijau berjenjang dengan glow,
+          gagal bergetar merah. Semua animasi CSS murni, tanpa library. Coba langsung di
+          bawah: kode demonya <code>1234</code>, kode lain memicu keadaan gagal.
+        </p>
+        <OtpVerification destination="admin@portal.id" onVerify={(code) => code === '1234'} />
+      </section>
     </>
   )
 }
